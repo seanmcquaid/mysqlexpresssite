@@ -23,4 +23,11 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get("/takeout", (req,res)=>{
+  const takeOutQuery = "SELECT name FROM restaurant WHERE takeOut = 'yes'"
+  connection.query(takeOutQuery, (err,result)=>{
+    res.json(result);
+  });
+})
+
 module.exports = router;
