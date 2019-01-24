@@ -1,9 +1,19 @@
 var express = require('express');
 var router = express.Router();
+// Use the mysql module to connect and query from express/node
+// the mysql is not part of CORE so we need to npm install
+var mysql = require("mysql");
+const config = require("../config");
+var connection = mysql.createConnection(config);
 
-/* GET home page. */
+connection.connect();
+
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  // we want to load up a list of our restaurants on the home page
+  // these are inside of my sql
+  // inside this route, BEFORE we res.render a view
+  // we want to query the database, get the data then we can send it over to the view
+
 });
 
 module.exports = router;
